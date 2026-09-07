@@ -65,6 +65,8 @@ jobs:
           username: ${{ secrets.PROD_USERNAME }}
           password: ${{ secrets.PROD_PASSWORD }}
           script: |
-            cd app/src
+            cd ~/app/src
             git pull
-            echo password ${{ secrets.PROD_PASSWORD }} | sudo -Ssystemctl restart api
+            source ../venv/bin/activate
+            pip install -r requirements.txt
+            echo "${{ secrets.PROD_PASSWORD }}" | sudo -S systemctl restart api
