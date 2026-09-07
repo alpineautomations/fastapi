@@ -56,8 +56,10 @@ jobs:
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
+    environment:
+      name: production
 
-    steps: 
+    steps:
       - name: deploy to ubuntu server
         uses: appleboy/ssh-action@v1.2.5
         with:
